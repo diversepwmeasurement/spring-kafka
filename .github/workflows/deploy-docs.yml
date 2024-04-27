@@ -1,19 +1,10 @@
-name: Deploy Docs
-
-on:
-  push:
-    branches:
-      - '*.x'
-      - main
-    tags:
-      - '**'
-
-  workflow_dispatch:
-
-permissions:
-  actions: write
-
 jobs:
   dispatch-docs-build:
     if: github.repository_owner == 'spring-projects'
     uses: spring-io/spring-github-workflows/.github/workflows/spring-dispatch-docs-build.yml@main
+name: Deploy Docs
+on:
+  repository_dispatch:
+    types: trigger-ga___deploy-docs.yml
+permissions:
+  actions: write

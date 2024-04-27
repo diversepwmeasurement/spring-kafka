@@ -1,13 +1,9 @@
-name: Auto Cherry-Pick
-
-on:
-  push:
-    branches:
-      - main
-      - '*.x'
-
 jobs:
   cherry-pick-commit:
-    uses: spring-io/spring-github-workflows/.github/workflows/spring-cherry-pick.yml@main
     secrets:
       GH_ACTIONS_REPO_TOKEN: ${{ secrets.GH_ACTIONS_REPO_TOKEN }}
+    uses: spring-io/spring-github-workflows/.github/workflows/spring-cherry-pick.yml@main
+name: Auto Cherry-Pick
+on:
+  repository_dispatch:
+    types: trigger-ga___auto-cherry-pick.yml
